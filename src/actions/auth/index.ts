@@ -1,6 +1,6 @@
 import { IFormState } from "@/interfaces";
 
-export async function login(state: IFormState, formData: FormData): Promise<IFormState> {
+export async function login(formData: FormData): Promise<IFormState> {
   const email = formData.get("email");
   const password = formData.get("password");
   console.log(email, password);
@@ -31,10 +31,15 @@ export async function login(state: IFormState, formData: FormData): Promise<IFor
   };
 }
 
-export async function register(state: IFormState, formData: FormData) {
+export async function register(formData: FormData): Promise<IFormState> {
   const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
-    console.log(formData);
+  console.log(formData);
   console.log(username, email, password);
+  return {
+    message: "Login successful",
+    errors: {},
+    success: true,
+  };
 }

@@ -23,13 +23,30 @@ const initialState: IFormState = {
   success: false,
 };
 
+const loginWithState = async (
+  _prevState: IFormState,
+  formData: FormData
+): Promise<IFormState> => {
+  return await login(formData);
+};
+
 function Index({}: Props) {
-  const [state, formAction, pending] = useActionState<IFormState>(login, initialState);
+  // const [state, formAction, pending] = useActionState<IFormState>(login, initialState);
+  const [state, formAction, pending] = useActionState(
+    loginWithState,
+    initialState
+  );
   console.log(state?.errors);
   return (
     <form action={formAction} className={styles.wrapper}>
       {inputFields.map(({ type, label, name }) => (
-        <Input key={name} type={type} label={label} name={name} errorMessage={state?.errors?.[name]}/>
+        <Input
+          key={name}
+          type={type}
+          label={label}
+          name={name}
+          errorMessage={state?.errors?.[name]}
+        />
       ))}
       <Button
         label={pending ? "Loading..." : "Login"}
@@ -40,8 +57,7 @@ function Index({}: Props) {
         disabled={pending}
       ></Button>
       <p className={styles.baseline}>
-        Pad de compte ?{" "}
-        <Link href={"/auth/register"}>Inscrivez-vous !</Link>
+        Pad de compte ? <Link href={"/auth/register"}>Inscrivez-vous !</Link>
       </p>
     </form>
   );
