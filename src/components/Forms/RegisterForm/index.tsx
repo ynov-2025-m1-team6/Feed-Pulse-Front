@@ -24,14 +24,31 @@ const initialState: IFormState = {
   success: false,
 };
 
+const registerWithState = async (
+  _prevState: IFormState,
+  formData: FormData
+): Promise<IFormState> => {
+  return await register(formData);
+};
+
 function Index({}: Props) {
-  const [state, formAction, pending] = useActionState<IFormState>(register, initialState);
+  // const [state, formAction, pending] = useActionState<IFormState>(register, initialState);
+  const [state, formAction, pending] = useActionState(
+    registerWithState,
+    initialState
+  );
   // console.log("state", state);
   console.log(state?.errors);
   return (
     <form action={formAction} className={styles.wrapper}>
       {inputFields.map(({ type, label, name }) => (
-        <Input key={name} type={type} label={label} name={name} errorMessage={state?.errors?.[name]}/>
+        <Input
+          key={name}
+          type={type}
+          label={label}
+          name={name}
+          errorMessage={state?.errors?.[name]}
+        />
       ))}
       <Button
         label={pending ? "Loading..." : "Register"}
