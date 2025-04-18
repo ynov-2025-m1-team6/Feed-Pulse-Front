@@ -25,7 +25,7 @@ const initialState: IFormState = {
 
 const loginWithState = async (
   _prevState: IFormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<IFormState> => {
   return await login(formData);
 };
@@ -34,7 +34,7 @@ function Index({}: Props) {
   // const [state, formAction, pending] = useActionState<IFormState>(login, initialState);
   const [state, formAction, pending] = useActionState(
     loginWithState,
-    initialState
+    initialState,
   );
   console.log(state?.errors);
   return (
