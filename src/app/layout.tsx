@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Nabvar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +12,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const navItems = [
+  {path: "/dashboard", label: "Dashboard"},
+  {path: "/auth/login", label: "Login"},
+  {path: "/auth/register", label: "Register"},
+]
 
 export const metadata: Metadata = {
   title: "Feed Pulse",
@@ -25,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Navbar navItems={navItems}/>
         {children}
       </body>
     </html>
