@@ -26,7 +26,7 @@ const initialState: IFormState = {
 
 const registerWithState = async (
   _prevState: IFormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<IFormState> => {
   return await register(formData);
 };
@@ -35,7 +35,7 @@ function Index({}: Props) {
   // const [state, formAction, pending] = useActionState<IFormState>(register, initialState);
   const [state, formAction, pending] = useActionState(
     registerWithState,
-    initialState
+    initialState,
   );
   // console.log("state", state);
   console.log(state?.errors);
