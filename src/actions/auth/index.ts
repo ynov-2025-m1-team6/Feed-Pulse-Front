@@ -3,6 +3,7 @@
 import { IFormState } from "@/interfaces";
 import { fetchApi } from "@/utils/utils";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function login(formData: FormData): Promise<IFormState> {
   const login = formData.get("login");
@@ -55,6 +56,7 @@ export async function register(formData: FormData): Promise<IFormState> {
     password,
   });
   console.log("res", res);
+  redirect("/auth/login");
   return {
     message: "Login successful",
     errors: {},

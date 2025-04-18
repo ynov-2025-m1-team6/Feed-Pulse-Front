@@ -57,7 +57,7 @@ function Index({}: Props) {
         disabled={pending}
       ></Button>
       <p className={styles.baseline}>
-        Pad de compte ? <Link href={"/auth/register"}>Inscrivez-vous !</Link>
+        Pas de compte ? <Link href={"/auth/register"}>Inscrivez-vous !</Link>
       </p>
     </form>
   );
