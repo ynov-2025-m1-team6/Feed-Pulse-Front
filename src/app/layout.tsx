@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 const navItems = [
-  {path: "/dashboard", label: "Dashboard"},
-  {path: "/auth/login", label: "Login"},
-  {path: "/auth/register", label: "Register"},
-]
+  { path: "/dashboard", label: "Dashboard" },
+  { path: "/auth/login", label: "Login" },
+  { path: "/auth/register", label: "Register" },
+];
 
 export const metadata: Metadata = {
   title: "Feed Pulse",
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar navItems={navItems}/>
+        <Navbar navItems={navItems} />
         {children}
         <Footer/>
       </body>
