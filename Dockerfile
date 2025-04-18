@@ -8,18 +8,11 @@ RUN npm install
 
 RUN npm run build
 
-FROM node:slim
+FROM nginx:alpine
 
-WORKDIR /app
+COPY --from=buildernode /app/dist /usr/share/nginx/html
 
-COPY --from=buildernode /app/.next /app/.next
-COPY --from=buildernode /app/public /app/public
-COPY --from=buildernode /app/package.json /app/package.json
-COPY --from=buildernode /app/package-lock.json /app/package-lock.json
 
-RUN npm install --omit=dev
-
-EXPOSE 3000
-
-CMD ["npm", "run", "start"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 
