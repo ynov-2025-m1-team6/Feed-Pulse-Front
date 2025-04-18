@@ -1,0 +1,25 @@
+.navItem{
+    padding: 18px 25px 18px 16px;
+    border-radius: 9px;
+    color: #b2aeae;
+    font-weight: bold;
+    svg{
+        fill: #b2aeae;
+    }
+    &.with_icon{
+        display: flex;
+        align-items: center;
+        // justify-content: space-around;
+        svg{
+            margin-right: 25px;
+        }
+
+    }
+    &:hover{
+        color: black;
+        background-color: #f1f1f1;
+    }
+    &:last-child{
+        margin-bottom: 60px;
+    }
+}
