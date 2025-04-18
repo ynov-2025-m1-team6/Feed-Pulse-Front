@@ -26,5 +26,5 @@ ENV PORT=3000
 EXPOSE $PORT
 
 
-CMD ["npm", "run", "start", "-p", "${PORT}"]
+CMD ["npm", "next", "start", "-p", "${PORT}"]
 
