@@ -1,15 +1,19 @@
+"use server";
+
 import { IFormState } from "@/interfaces";
+import { fetchApi } from "@/utils/utils";
+import { cookies } from "next/headers";
 
 export async function login(formData: FormData): Promise<IFormState> {
-  const email = formData.get("email");
+  const login = formData.get("login");
   const password = formData.get("password");
-  console.log(email, password);
+  console.log(login, password);
 
   const errors: Record<string, string> = {};
 
   for (const [name, value] of formData.entries()) {
-    if (name === "email" && !value) {
-      errors.email = "Email is required";
+    if (name === "login" && !value) {
+      errors.email = "Email or Username is required";
     }
     if (name === "password" && !value) {
       errors.password = "Password is required";
@@ -22,6 +26,14 @@ export async function login(formData: FormData): Promise<IFormState> {
       errors: errors,
       success: false,
     };
+  }
+
+  const res = await fetchApi("api/auth/login", "POST", { login, password });
+  console.log("res", res);
+  const token = res.headers.get("authorization");
+  const cookieStore = await cookies();
+  if (token) {
+    cookieStore.set("jwt", token.replace("Bearer ", ""));
   }
 
   return {
@@ -37,6 +49,12 @@ export async function register(formData: FormData): Promise<IFormState> {
   const password = formData.get("password");
   console.log(formData);
   console.log(username, email, password);
+  const res = await fetchApi("api/auth/register", "POST", {
+    username,
+    email,
+    password,
+  });
+  console.log("res", res);
   return {
     message: "Login successful",
     errors: {},

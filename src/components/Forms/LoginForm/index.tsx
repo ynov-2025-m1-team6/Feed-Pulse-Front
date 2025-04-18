@@ -13,7 +13,7 @@ import { IFormState } from "@/interfaces";
 type Props = object;
 
 const inputFields = [
-  { type: "text", label: "Email", name: "email" },
+  { type: "text", label: "Login", name: "login" },
   { type: "password", label: "Password", name: "password" },
 ];
 
