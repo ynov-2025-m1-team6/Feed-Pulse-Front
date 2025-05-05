@@ -39,10 +39,10 @@ function Index({}: Props) {
   );
 
   useEffect(() => {
-      if (state?.success) {
-        redirect("/dashboard")
-      }
-    }, [state]);
+    if (state?.success) {
+      redirect("/dashboard");
+    }
+  }, [state]);
   console.log(state?.errors);
   return (
     <form action={formAction} className={styles.wrapper}>

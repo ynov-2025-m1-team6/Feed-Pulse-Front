@@ -17,7 +17,7 @@ export const fetchApi = async (
 
     const data = await response.json();
     console.log("data", data);
-    return {data, response};
+    return { data, response };
   } catch (error) {
     console.error("Error fetching API:", error);
     throw error;

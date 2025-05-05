@@ -15,9 +15,9 @@ type Story = StoryObj<typeof Navbar>;
 export const BasicNavbar: Story = {
   args: {
     navItems: [
-      { path: "/", label: "Home",  },
-      { path: "/profile", label: "Profile",  },
-      { path: "/settings", label: "Settings",  },
+      { path: "/", label: "Home" },
+      { path: "/profile", label: "Profile" },
+      { path: "/settings", label: "Settings" },
     ],
   },
 };

@@ -35,7 +35,8 @@ function Index() {
   }, [state]);
 
   const errorMessage =
-  Object.values(state.errors).join("") || Object.values(state.errors || {}).join(", ");
+    Object.values(state.errors).join("") ||
+    Object.values(state.errors || {}).join(", ");
 
   return (
     <form action={formAction} className={styles.wrapper}>
@@ -57,7 +58,8 @@ function Index() {
         disabled={pending}
       />
       <p className={styles.baseline}>
-        Vous avez déjà un compte ? <Link href={"/auth/login"}>Connectez-vous !</Link>
+        Vous avez déjà un compte ?{" "}
+        <Link href={"/auth/login"}>Connectez-vous !</Link>
       </p>
 
       <Toast

@@ -43,7 +43,10 @@ export async function login(formData: FormData): Promise<IFormState> {
   };
 }
 
-export async function register(state: IFormState, formData: FormData): Promise<IFormState> {
+export async function register(
+  state: IFormState,
+  formData: FormData,
+): Promise<IFormState> {
   const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
@@ -55,7 +58,7 @@ export async function register(state: IFormState, formData: FormData): Promise<I
     password,
   });
   console.log("server action", res);
-  if(res.data.error) {
+  if (res.data.error) {
     return {
       message: "Form validation failed",
       errors: res.data.error,
