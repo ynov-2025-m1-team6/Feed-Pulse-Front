@@ -2,6 +2,7 @@
 
 import { IFormState } from "@/interfaces";
 import { fetchApi } from "@/utils/utils";
+import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export async function login(formData: FormData): Promise<IFormState> {
@@ -28,7 +29,7 @@ export async function login(formData: FormData): Promise<IFormState> {
     };
   }
 
-  const res = await fetchApi("api/auth/login", "POST", { login, password });
+  const res = await fetchApi("api/auth/login", "POST", "", { login, password });
   console.log("res", res);
   const token = res.response.headers.get("authorization");
   const cookieStore = await cookies();
@@ -52,7 +53,7 @@ export async function register(
   const password = formData.get("password");
   // console.log(formData);
   // console.log(username, email, password);
-  const res = await fetchApi("api/auth/register", "POST", {
+  const res = await fetchApi("api/auth/register", "POST", "", {
     username,
     email,
     password,
@@ -71,4 +72,20 @@ export async function register(
     errors: {},
     success: true,
   };
+}
+
+export async function getUser() {
+  const cookieStore = await cookies();
+  const token = await cookieStore.get("jwt");
+
+  const res = await fetchApi("api/auth/user", "GET", token?.value);
+  return res.data;
+}
+
+export async function logout() {
+  const res = await fetchApi("api/auth/logout", "POST");
+  console.log(res);
+  const cookieStore = await cookies();
+  cookieStore.delete("jwt");
+  redirect("/auth/login");
 }

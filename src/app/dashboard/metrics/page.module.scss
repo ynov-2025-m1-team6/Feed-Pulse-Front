@@ -1,0 +1,58 @@
+.wrapper {
+  // background-color: orange;
+  flex-grow: 1;
+  padding: 20px;
+  height: fit-content;
+  .page_header {
+    // background-color: blue;
+    margin-bottom: 15px;
+  }
+  .page_main {
+    .volumetrie{
+      grid-column: span 4;
+    }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px 24px;
+    .metrics_list_channel {
+      grid-column: span 2;
+      .metrics_list_header{
+        margin-bottom: 15px;
+      }
+      .metrics_list_content{
+        display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 15px;
+      // max-height: 200px;
+      // overflow-y: scroll;
+      }
+    }
+    .metrics_list_topic {
+      grid-column: span 2;
+      .metrics_list_header{
+        margin-bottom: 15px;
+      }
+      .metrics_list_content{
+        display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 15px;
+      // max-height: 200px;
+      // overflow-y: scroll;
+      }
+    }
+    // .metrics_list_topic {
+    //   grid-column: span 2;
+    //   overflow: scroll;
+    //   display: grid;
+    //   grid-template-columns: repeat(2, 1fr);
+    //   gap: 35px 24px;
+    //   max-height: 200px;
+    // }
+    .channelsChart{
+      grid-column: span 2;
+    }
+    .topicsChart{
+      grid-column: span 2;
+    }
+  }
+}
