@@ -13,11 +13,11 @@ export const fetchApi = async (
       },
       body: JSON.stringify(body),
     });
-    // console.log("response", response);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response;
+    console.log("response", response);
+
+    const data = await response.json();
+    console.log("data", data);
+    return {data, response};
   } catch (error) {
     console.error("Error fetching API:", error);
     throw error;

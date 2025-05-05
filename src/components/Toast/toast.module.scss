@@ -1,0 +1,32 @@
+.wrapper {
+    position: fixed;
+    right: -65%;
+    top: -140px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        &.top__right {
+            // right: 2%;
+        }
+        &.top__left {
+            // left: 2%;
+        }
+        &.bottom__right {
+            // right: 2%;
+            // top: auto;
+            // bottom: 2%;
+        }
+        &.bottom__left {
+            // left: 2%;
+            // top: auto;
+            // bottom: 2%;
+        }
+    }
+}
