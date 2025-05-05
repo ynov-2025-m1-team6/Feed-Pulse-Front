@@ -7,7 +7,6 @@ import LineChart from "@/components/Charts/Linechart";
 
 export default async function Metrics() {
   const metrics: IMetrics = await getMetrics();
-  console.log(metrics);
 
   const getBackgroundColor = (index: number): string => {
     const colors = ["green", "blue", "pink", "orange"];
@@ -21,7 +20,7 @@ export default async function Metrics() {
       </div>
       <div className={styles.page_main}>
         <div className={styles.volumetrie}>
-          <LineChart volumetryByDay={metrics.volumetryByDay} />
+          <LineChart volumetryByDay={metrics?.volumetryByDay} />
         </div>
         <div className={styles.metrics_list_channel}>
           <div className={styles.metrics_list_header}>
@@ -29,7 +28,7 @@ export default async function Metrics() {
           </div>
           <div className={styles.metrics_list_content}>
             {metrics?.distributionByTopic &&
-              Object.entries(metrics.distributionByChannel).map(
+              Object.entries(metrics?.distributionByChannel).map(
                 ([label, data], i) => (
                   <MetricCard
                     key={i}
@@ -49,7 +48,7 @@ export default async function Metrics() {
           </div>
           <div className={styles.metrics_list_content}>
             {metrics?.distributionByTopic &&
-              Object.entries(metrics.distributionByTopic).map(
+              Object.entries(metrics?.distributionByTopic).map(
                 ([label, data], i) => (
                   <MetricCard
                     key={i}
@@ -66,7 +65,7 @@ export default async function Metrics() {
         <div>
           <MetricCard
             label={"average sentiment"}
-            data={metrics.averageSentiment}
+            data={metrics?.averageSentiment}
             backgroundColor={"blue"}
             cardSize="small"
             unit="%"
@@ -75,7 +74,7 @@ export default async function Metrics() {
         <div>
           <MetricCard
             label={"positive sentiment"}
-            data={metrics.Sentiment.positive}
+            data={metrics?.Sentiment.positive}
             backgroundColor={"green"}
             cardSize="small"
             unit="%"
@@ -84,7 +83,7 @@ export default async function Metrics() {
         <div>
           <MetricCard
             label={"negative sentiment"}
-            data={metrics.Sentiment.negative}
+            data={metrics?.Sentiment.negative}
             backgroundColor={"orange"}
             cardSize="small"
             unit="%"
@@ -93,7 +92,7 @@ export default async function Metrics() {
         <div>
           <MetricCard
             label={"sentiment under treshold"}
-            data={metrics.percentageSentimentUnderTreshold}
+            data={metrics?.percentageSentimentUnderTreshold}
             backgroundColor={"pink"}
             cardSize="small"
             unit="%"
