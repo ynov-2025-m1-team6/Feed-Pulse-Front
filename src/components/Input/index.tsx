@@ -7,6 +7,8 @@ type Props = {
   name: string;
   errorMessage?: string;
   value?: string;
+  disabled: boolean;
+  readonly: boolean;
   handleChangeFunction?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -17,6 +19,8 @@ const Input = ({
   errorMessage,
   value,
   handleChangeFunction,
+  disabled,
+  readonly,
 }: Props) => {
   return (
     <div className={styles.auth_form_field}>
@@ -27,6 +31,8 @@ const Input = ({
         name={name}
         value={value}
         onChange={handleChangeFunction}
+        readOnly={readonly}
+        disabled={disabled}
       />
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
