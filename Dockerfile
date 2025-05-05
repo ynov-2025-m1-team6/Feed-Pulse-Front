@@ -19,7 +19,11 @@ COPY --from=buildernode /app/package-lock.json /app/package-lock.json
 
 RUN npm install --omit=dev
 
-EXPOSE 3000
+ENV NEXT_PUBLIC_API_URL=https://feed-pulse-api-dev.onrender.com/
 
-CMD ["npm", "run", "start"]
+ENV PORT=3000
+
+EXPOSE $PORT
+
+CMD npx next start -p $PORT
 

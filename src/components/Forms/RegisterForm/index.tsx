@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import ArrowIcon from "@/assets/ArrowIcon";
@@ -9,8 +9,7 @@ import { register } from "@/actions/auth";
 import { useActionState } from "react";
 import Link from "next/link";
 import { IFormState } from "@/interfaces";
-
-type Props = object;
+import Toast from "@/components/Toast";
 
 const inputFields = [
   { type: "text", label: "Username", name: "username" },
@@ -24,21 +23,21 @@ const initialState: IFormState = {
   success: false,
 };
 
-const registerWithState = async (
-  _prevState: IFormState,
-  formData: FormData,
-): Promise<IFormState> => {
-  return await register(formData);
-};
+function Index() {
+  const [isToastOpen, setIsToastOpen] = useState(false);
 
-function Index({}: Props) {
-  // const [state, formAction, pending] = useActionState<IFormState>(register, initialState);
-  const [state, formAction, pending] = useActionState(
-    registerWithState,
-    initialState,
-  );
-  // console.log("state", state);
-  console.log(state?.errors);
+  const [state, formAction, pending] = useActionState(register, initialState);
+
+  useEffect(() => {
+    if (state?.message || Object.keys(state.errors || {}).length > 0) {
+      setIsToastOpen(true);
+    }
+  }, [state]);
+
+  const errorMessage =
+    Object.values(state.errors).join("") ||
+    Object.values(state.errors || {}).join(", ");
+
   return (
     <form action={formAction} className={styles.wrapper}>
       {inputFields.map(({ type, label, name }) => (
@@ -57,11 +56,19 @@ function Index({}: Props) {
         type="submit"
         iconPosition="right"
         disabled={pending}
-      ></Button>
+      />
       <p className={styles.baseline}>
         Vous avez déjà un compte ?{" "}
         <Link href={"/auth/login"}>Connectez-vous !</Link>
       </p>
+
+      <Toast
+        isOpen={isToastOpen}
+        variant="error"
+        label={errorMessage}
+        duration={3000}
+        close={() => setIsToastOpen(false)}
+      />
     </form>
   );
 }
