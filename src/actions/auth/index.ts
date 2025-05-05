@@ -30,7 +30,7 @@ export async function login(formData: FormData): Promise<IFormState> {
 
   const res = await fetchApi("api/auth/login", "POST", { login, password });
   console.log("res", res);
-  const token = res.headers.get("authorization");
+  const token = res.response.headers.get("authorization");
   const cookieStore = await cookies();
   if (token) {
     cookieStore.set("jwt", token.replace("Bearer ", ""));
@@ -43,18 +43,29 @@ export async function login(formData: FormData): Promise<IFormState> {
   };
 }
 
-export async function register(formData: FormData): Promise<IFormState> {
+export async function register(
+  state: IFormState,
+  formData: FormData,
+): Promise<IFormState> {
   const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log(formData);
-  console.log(username, email, password);
+  // console.log(formData);
+  // console.log(username, email, password);
   const res = await fetchApi("api/auth/register", "POST", {
     username,
     email,
     password,
   });
-  console.log("res", res);
+  console.log("server action", res);
+  if (res.data.error) {
+    return {
+      message: "Form validation failed",
+      errors: res.data.error,
+      success: false,
+    };
+  }
+  // redirect("/auth/login");
   return {
     message: "Login successful",
     errors: {},

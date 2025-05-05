@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import ArrowIcon from "@/assets/ArrowIcon";
@@ -9,6 +9,7 @@ import { login } from "@/actions/auth";
 import { useActionState } from "react";
 import Link from "next/link";
 import { IFormState } from "@/interfaces";
+import { redirect } from "next/navigation";
 
 type Props = object;
 
@@ -36,6 +37,12 @@ function Index({}: Props) {
     loginWithState,
     initialState,
   );
+
+  useEffect(() => {
+    if (state?.success) {
+      redirect("/dashboard");
+    }
+  }, [state]);
   console.log(state?.errors);
   return (
     <form action={formAction} className={styles.wrapper}>
@@ -57,7 +64,7 @@ function Index({}: Props) {
         disabled={pending}
       ></Button>
       <p className={styles.baseline}>
-        Pad de compte ? <Link href={"/auth/register"}>Inscrivez-vous !</Link>
+        Pas de compte ? <Link href={"/auth/register"}>Inscrivez-vous !</Link>
       </p>
     </form>
   );
