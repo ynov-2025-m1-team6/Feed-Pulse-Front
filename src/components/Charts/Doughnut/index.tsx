@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, TooltipItem } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { DoughnutChartData } from "@/interfaces";
 
@@ -44,7 +44,7 @@ const DoughnutChart: React.FC<Props> = ({ data }) => {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<'doughnut'>) => {
             const label = context.label || "";
             const value = context.raw;
             return `${label}: ${value}`;

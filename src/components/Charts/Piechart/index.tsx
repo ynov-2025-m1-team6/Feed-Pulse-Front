@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, TooltipItem } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { PieChartData } from "@/interfaces";
 
@@ -44,7 +44,7 @@ const PieChart: React.FC<Props> = ({ data }) => {
       },
       tooltip: {
         callbacks: {
-          label: function (context: any) {
+          label: function (context: TooltipItem<'pie'>) {
             const value = context.raw;
             const label = context.label;
             return `${label}: ${value}`;

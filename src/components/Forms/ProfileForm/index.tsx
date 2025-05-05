@@ -12,7 +12,7 @@ function Index({ user }: Props) {
   const excludedFields = ["id", "password", "uuid", "UpdatedAt"];
   const readOnlyFields = ["CreatedAt", "username", "email"];
 
-  const [form, setForm] = useState<Record<string, any>>({});
+  const [form, setForm] = useState<Partial<Omit<IUser, "id" | "password" | "uuid" | "UpdatedAt">>>({});
 
   useEffect(() => {
     if (user) {
@@ -20,16 +20,16 @@ function Index({ user }: Props) {
         (acc, [key, value]) => {
           if (!excludedFields.includes(key)) {
             if (key === "password") {
-              acc[key] = "";
+              (acc as Partial<Omit<IUser, "id" | "uuid" | "UpdatedAt">>)[key] = "";
             } else if (key === "CreatedAt") {
               acc[key] = formatDate(value);
             } else {
-              acc[key] = value;
+              acc[key as keyof typeof acc] = value;
             }
           }
           return acc;
         },
-        {} as Record<string, any>,
+        {} as Partial<Omit<IUser, "id" | "password" | "uuid" | "UpdatedAt">>,
       );
 
       setForm(initialFormState);
@@ -74,7 +74,7 @@ function Index({ user }: Props) {
           type={type}
           label={label}
           name={name}
-          value={form[name] || ""}
+          value={form[name as keyof typeof form] || ""}
           handleChangeFunction={handleInputChange}
           readonly={readOnly}
           disabled={readOnly}
