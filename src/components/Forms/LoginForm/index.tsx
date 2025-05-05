@@ -53,6 +53,8 @@ function Index({}: Props) {
           label={label}
           name={name}
           errorMessage={state?.errors?.[name]}
+          disabled={pending}
+          readonly={false}
         />
       ))}
       <Button

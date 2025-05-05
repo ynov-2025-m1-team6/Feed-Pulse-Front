@@ -47,6 +47,8 @@ function Index() {
           label={label}
           name={name}
           errorMessage={state?.errors?.[name]}
+          disabled={false}
+          readonly={false}
         />
       ))}
       <Button
