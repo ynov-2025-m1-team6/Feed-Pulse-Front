@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Feed-Pulse-Front
 
-## Getting Started
+## Owerview
 
-First, run the development server:
+Feed-Pulse-Front is a web application that provides a user-friendly interface for managing and analyzing data from the Feed-Pulse API. It allows users to visualize and interact with their data in a more intuitive way.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- next.js
+- rechart
+- SASS & TS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ynov-2025-m1-team6/Feed-Pulse-Front
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Feed-Pulse-Front
+   ```
+3. Install the dependencies:
+   ```bash
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+     npm run dev
+     ```
+5. Open your browser and go to `http://localhost:3000` to view the application.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Development
+- **URL**: [https://feed-pulse-dev.onrender.com](https://feed-pulse-dev.onrender.com)
+- **Branch**: `develop`
+- **Deployment**: Automatic deployment on push to `develop` branch.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Production
+- **URL**: [https://feed-pulse.onrender.com](https://feed-pulse.onrender.com)
+- **Branch**: `main`
+- **Deployment**: Automatic deployment on push to `main` branch.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Authors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Tot0p](https://github.com/tot0p)
+- [Florian Techer](http://github.com/Florian-Techer)
