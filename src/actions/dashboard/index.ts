@@ -3,7 +3,16 @@
 import { fetchApi } from "@/utils/utils";
 import { cookies } from "next/headers";
 
-export async function addFile(prevState, formData: FormData) {
+interface AddFileResponse {
+  message: string;
+  success: boolean;
+  errors: Record<string, string>;
+}
+
+export async function addFile(
+  prevState: unknown,
+  formData: FormData,
+): Promise<AddFileResponse> {
   const file = formData.get("file") as File;
 
   if (!file || !(file instanceof Blob)) {
