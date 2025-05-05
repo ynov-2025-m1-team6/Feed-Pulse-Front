@@ -5,30 +5,7 @@ import { getMetrics } from "@/actions/dashboard";
 import { IMetrics } from "@/interfaces";
 import LineChart from "@/components/Charts/Linechart";
 
-export const metricsData = [
-  {
-    label: "Total Dépenses",
-    data: "245.00 €",
-    backgroundColor: "green",
-  },
-  {
-    label: "Revenus Mensuels",
-    data: "1 800.00 €",
-    backgroundColor: "blue",
-  },
-  {
-    label: "Épargne",
-    data: "450.00 €",
-    backgroundColor: "pink",
-  },
-  {
-    label: "Investissements",
-    data: "320.00 €",
-    backgroundColor: "orange",
-  },
-];
-
-export default async function page() {
+export default async function Metrics() {
   const metrics: IMetrics = await getMetrics();
   console.log(metrics);
 

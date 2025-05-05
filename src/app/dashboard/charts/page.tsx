@@ -11,7 +11,7 @@ import {
 } from "@/interfaces";
 import { getMetrics } from "@/actions/dashboard";
 
-export default async function page() {
+export default async function Charts() {
   const metrics: IMetrics = await getMetrics();
   console.log(metrics);
 

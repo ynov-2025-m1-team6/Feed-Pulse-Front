@@ -9,7 +9,7 @@ type Props = {
 };
 
 function Index({ user }: Props) {
-  const excludedFields = ["id", "password", "uuid", "UpdatedAt"];
+  const excludedFields = React.useMemo(() => ["id", "password", "uuid", "UpdatedAt"], []);
   const readOnlyFields = ["CreatedAt", "username", "email"];
 
   const [form, setForm] = useState<
@@ -37,7 +37,7 @@ function Index({ user }: Props) {
 
       setForm(initialFormState);
     }
-  }, [user]);
+  }, [user, excludedFields]);
 
   const formatDate = (timestamp: string): string => {
     const cleanTimestamp = timestamp.split(".")[0] + "Z";

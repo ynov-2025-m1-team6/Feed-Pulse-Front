@@ -3,7 +3,7 @@ import styles from "./page.module.scss";
 import { getUser } from "@/actions/auth";
 import ProfileForm from "@/components/Forms/ProfileForm";
 
-export default async function page() {
+export default async function Profile() {
   const user = await getUser();
   return (
     <div className={styles.wrapper}>
