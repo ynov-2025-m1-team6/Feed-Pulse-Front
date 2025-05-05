@@ -1,0 +1,26 @@
+.wrapper{
+    border-radius: 25px;
+    padding: 16px 24px;
+    color: white;
+    &_green{
+        background: linear-gradient(90deg,rgba(140, 201, 166, 1) 0%, rgba(62, 155, 107, 1) 100%);
+    }
+    &_blue{
+        background: linear-gradient(90deg,rgba(0, 97, 141, 1) 0%, rgba(3, 41, 63, 1) 100%);
+    }
+    &_pink{
+        background: linear-gradient(90deg,rgba(250, 167, 231, 1) 0%, rgba(237, 51, 185, 1) 100%);
+    }
+    &_orange{
+        background: linear-gradient(90deg,rgba(250, 215, 174, 1) 0%, rgba(246, 175, 101, 1) 100%);
+    }
+    &_small{
+        grid-column: span 1;
+    }
+    &_medium{
+        grid-column: span 2;
+    }
+    &_large{
+        grid-column: span 3;
+    }
+}

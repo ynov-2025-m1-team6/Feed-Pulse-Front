@@ -1,8 +1,13 @@
-import React from 'react'
+import React from "react";
 import styles from "./page.module.scss";
+import { getUser } from "@/actions/auth";
+import ProfileForm from "@/components/Forms/ProfileForm";
 
-export default function page() {
+export default async function page() {
+  const user = await getUser();
   return (
-    <div className={styles.wrapper}>profile</div>
-  )
+    <div className={styles.wrapper}>
+      <ProfileForm user={user} />
+    </div>
+  );
 }
