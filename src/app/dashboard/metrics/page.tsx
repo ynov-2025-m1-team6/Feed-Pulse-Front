@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import styles from "./page.module.scss";
 import MetricCard from "@/components/Cards/MetricCard";
