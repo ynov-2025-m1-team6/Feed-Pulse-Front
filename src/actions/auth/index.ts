@@ -8,7 +8,6 @@ import { cookies } from "next/headers";
 export async function login(formData: FormData): Promise<IFormState> {
   const login = formData.get("login");
   const password = formData.get("password");
-  console.log(login, password);
 
   const errors: Record<string, string> = {};
 
@@ -24,24 +23,44 @@ export async function login(formData: FormData): Promise<IFormState> {
   if (Object.keys(errors).length > 0) {
     return {
       message: "Form validation failed",
-      errors: errors,
+      errors,
       success: false,
     };
   }
 
-  const res = await fetchApi("api/auth/login", "POST", "", { login, password });
-  console.log("res", res);
-  const token = res.response.headers.get("authorization");
-  const cookieStore = await cookies();
-  if (token) {
-    cookieStore.set("jwt", token.replace("Bearer ", ""));
-  }
+  try {
+    const res = await fetchApi("api/auth/login", "POST", "", {
+      login,
+      password,
+    });
 
-  return {
-    message: "Login successful",
-    errors: {},
-    success: true,
-  };
+    const token = res.response.headers.get("authorization");
+    const cookieStore = await cookies();
+
+    if (token) {
+      cookieStore.set("jwt", token.replace("Bearer ", ""));
+    }
+
+    return {
+      message: "Login successful",
+      errors: {},
+      success: true,
+    };
+  } catch (error: unknown) {
+    if (error instanceof Error && error.message === "Unauthorized") {
+      return {
+        message: "Invalid credentials",
+        errors: { login: "Incorrect login or password" },
+        success: false,
+      };
+    }
+
+    return {
+      message: "An unexpected error occurred",
+      errors: {},
+      success: false,
+    };
+  }
 }
 
 export async function register(

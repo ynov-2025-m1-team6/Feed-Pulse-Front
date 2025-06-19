@@ -1,0 +1,110 @@
+[
+  {
+    "url": "https://feed-pulse-dev.onrender.com/auth/login",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_login-2025_06_19_13_22_00.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_login-2025_06_19_13_22_00.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 0.95,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/auth/login",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_login-2025_06_19_13_22_31.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_login-2025_06_19_13_22_31.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 0.95,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/auth/register",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_register-2025_06_19_13_23_00.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_register-2025_06_19_13_23_00.report.json",
+    "summary": {
+      "performance": 0.91,
+      "accessibility": 0.96,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/auth/register",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_register-2025_06_19_13_23_14.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_register-2025_06_19_13_23_14.report.json",
+    "summary": {
+      "performance": 0.99,
+      "accessibility": 0.96,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/dashboard",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-dashboard-2025_06_19_13_23_29.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-dashboard-2025_06_19_13_23_29.report.json",
+    "summary": {
+      "performance": 0.99,
+      "accessibility": 0.95,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/dashboard",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-dashboard-2025_06_19_13_23_42.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-dashboard-2025_06_19_13_23_42.report.json",
+    "summary": {
+      "performance": 0.96,
+      "accessibility": 0.95,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/auth/login",
+    "isRepresentativeRun": true,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_login-2025_06_19_13_22_17.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_login-2025_06_19_13_22_17.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 0.95,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/auth/register",
+    "isRepresentativeRun": true,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_register-2025_06_19_13_22_44.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-auth_register-2025_06_19_13_22_44.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 0.96,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  },
+  {
+    "url": "https://feed-pulse-dev.onrender.com/dashboard",
+    "isRepresentativeRun": true,
+    "htmlPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-dashboard-2025_06_19_13_23_56.report.html",
+    "jsonPath": "C:\\Florian\\YNOV\\Devops\\FeedPulse\\feed-pulse-front\\lhci-report\\feed_pulse_dev_onrender_com-dashboard-2025_06_19_13_23_56.report.json",
+    "summary": {
+      "performance": 0.99,
+      "accessibility": 0.95,
+      "best-practices": 1,
+      "seo": 0.9
+    }
+  }
+]
