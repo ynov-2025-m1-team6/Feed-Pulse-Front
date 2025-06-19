@@ -49,7 +49,7 @@ export const fetchApi = async (
           });
 
           const error = new Error(
-            `API error: ${response.status} ${response.statusText}`
+            `API error: ${response.status} ${response.statusText}`,
           );
           Sentry.captureException(error);
           throw error;
@@ -68,6 +68,6 @@ export const fetchApi = async (
         Sentry.captureException(error);
         throw error;
       }
-    }
+    },
   );
 };
