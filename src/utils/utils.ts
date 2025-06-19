@@ -39,6 +39,9 @@ export const fetchApi = async (
           data = null;
         }
 
+        console.log("utils");
+        console.log(response);
+
         if (!response.ok) {
           // Ajoute du contexte Sentry pour les erreurs d’API (non-2xx)
           Sentry.setContext("fetchApi", {
@@ -47,6 +50,17 @@ export const fetchApi = async (
             status: response.status,
             body: isFormData ? "FormData" : body,
           });
+
+          if (response.status === 401) {
+            Sentry.captureMessage(
+              "Unauthorized access - redirecting to login",
+              {
+                level: "warning",
+              },
+            );
+            // On jette une erreur personnalisée ici
+            throw new Error("Unauthorized");
+          }
 
           const error = new Error(
             `API error: ${response.status} ${response.statusText}`,
