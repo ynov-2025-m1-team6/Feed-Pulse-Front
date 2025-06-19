@@ -4,7 +4,7 @@ export const fetchApi = async (
   endpoint: string,
   method: string,
   token?: string,
-  body?: object | FormData,
+  body?: object | FormData
 ) => {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const isFormData = body instanceof FormData;
@@ -39,6 +39,9 @@ export const fetchApi = async (
           data = null;
         }
 
+        console.log("utils");
+        console.log(response);
+
         if (!response.ok) {
           // Ajoute du contexte Sentry pour les erreurs d’API (non-2xx)
           Sentry.setContext("fetchApi", {
@@ -48,8 +51,19 @@ export const fetchApi = async (
             body: isFormData ? "FormData" : body,
           });
 
+          if (response.status === 401) {
+            Sentry.captureMessage(
+              "Unauthorized access - redirecting to login",
+              {
+                level: "warning",
+              }
+            );
+            // On jette une erreur personnalisée ici
+            throw new Error("Unauthorized");
+          }
+
           const error = new Error(
-            `API error: ${response.status} ${response.statusText}`,
+            `API error: ${response.status} ${response.statusText}`
           );
           Sentry.captureException(error);
           throw error;
@@ -68,6 +82,6 @@ export const fetchApi = async (
         Sentry.captureException(error);
         throw error;
       }
-    },
+    }
   );
 };
