@@ -13,6 +13,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@sentry/nextjs": "^9.30.0",
     "chart.js": "^4.4.9",
     "next": "15.3.0",
     "prettier": "^3.5.3",
