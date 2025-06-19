@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/nextjs";
+
 export const fetchApi = async (
   endpoint: string,
   method: string,
@@ -5,8 +7,6 @@ export const fetchApi = async (
   body?: object | FormData,
 ) => {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-  console.log("baseUrl", baseUrl);
-
   const isFormData = body instanceof FormData;
 
   const headers: HeadersInit = {};
@@ -19,17 +19,55 @@ export const fetchApi = async (
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  try {
-    const response = await fetch(`${baseUrl}${endpoint}`, {
-      method,
-      headers: Object.keys(headers).length ? headers : undefined,
-      body: isFormData ? body : JSON.stringify(body),
-    });
+  return await Sentry.startSpan(
+    {
+      name: `Fetch ${method} ${endpoint}`,
+      op: "http.client",
+    },
+    async () => {
+      try {
+        const response = await fetch(`${baseUrl}${endpoint}`, {
+          method,
+          headers: Object.keys(headers).length ? headers : undefined,
+          body: isFormData ? body : JSON.stringify(body),
+        });
 
-    const data = await response.json();
-    return { data, response };
-  } catch (error) {
-    console.error("Error fetching API:", error);
-    throw error;
-  }
+        let data;
+        try {
+          data = await response.json();
+        } catch {
+          data = null;
+        }
+
+        if (!response.ok) {
+          // Ajoute du contexte Sentry pour les erreurs d’API (non-2xx)
+          Sentry.setContext("fetchApi", {
+            endpoint,
+            method,
+            status: response.status,
+            body: isFormData ? "FormData" : body,
+          });
+
+          const error = new Error(
+            `API error: ${response.status} ${response.statusText}`,
+          );
+          Sentry.captureException(error);
+          throw error;
+        }
+
+        return { data, response };
+      } catch (error) {
+        // Capture toute autre erreur (réseau, parsing, etc.)
+        Sentry.setContext("fetchApi", {
+          endpoint,
+          method,
+          token: token ? "provided" : "none",
+          isFormData,
+        });
+
+        Sentry.captureException(error);
+        throw error;
+      }
+    },
+  );
 };
