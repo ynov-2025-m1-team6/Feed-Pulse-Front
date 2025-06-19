@@ -4,7 +4,7 @@ export const fetchApi = async (
   endpoint: string,
   method: string,
   token?: string,
-  body?: object | FormData
+  body?: object | FormData,
 ) => {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const isFormData = body instanceof FormData;
@@ -56,14 +56,14 @@ export const fetchApi = async (
               "Unauthorized access - redirecting to login",
               {
                 level: "warning",
-              }
+              },
             );
             // On jette une erreur personnalisée ici
             throw new Error("Unauthorized");
           }
 
           const error = new Error(
-            `API error: ${response.status} ${response.statusText}`
+            `API error: ${response.status} ${response.statusText}`,
           );
           Sentry.captureException(error);
           throw error;
@@ -82,6 +82,6 @@ export const fetchApi = async (
         Sentry.captureException(error);
         throw error;
       }
-    }
+    },
   );
 };

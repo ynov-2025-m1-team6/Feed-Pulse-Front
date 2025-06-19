@@ -29,7 +29,10 @@ export async function login(formData: FormData): Promise<IFormState> {
   }
 
   try {
-    const res = await fetchApi("api/auth/login", "POST", "", { login, password });
+    const res = await fetchApi("api/auth/login", "POST", "", {
+      login,
+      password,
+    });
 
     const token = res.response.headers.get("authorization");
     const cookieStore = await cookies();
@@ -59,7 +62,6 @@ export async function login(formData: FormData): Promise<IFormState> {
     };
   }
 }
-
 
 export async function register(
   state: IFormState,
